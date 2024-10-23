@@ -1,5 +1,5 @@
 import Database_Config from "../../DATABASE/Database_Config";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 const supabase = Database_Config();
 
@@ -12,7 +12,6 @@ export async function GET(req) {
             return NextResponse.json({ error: 'Error fetching books' }, { status: 404 });
         }
 
-        console.log(books);
         return NextResponse.json({ books }, { status: 200 });
 
     } catch (error) {
@@ -29,9 +28,10 @@ export async function POST(req) {
 
         if (error) {
             return NextResponse.json({ error: 'Error inserting books' }, { status: 404 });
-        } else {
-            return NextResponse.json({ books }, { status: 200 })
         }
+        
+        return NextResponse.json({ books }, { status: 200 });
+    
     } catch (error) {
         return NextResponse.json({ error: 'Interal Server Error' }, { status: 500 }, { error })
     }
@@ -47,9 +47,9 @@ export async function PUT(req) {
         if (error) {
             console.log(error);
             return NextResponse.json({ error: 'Error updating book' }, { status: 404 })
-        } else {
-            return NextResponse.json({ data }, { status: 200 })
-        }
+        } 
+
+        return NextResponse.json({ data }, { status: 200 });
 
     } catch (error) {
         console.log(error);
@@ -66,25 +66,13 @@ export async function DELETE(req) {
 
         if (error) {
             console.log(error);
-            return NextResponse.json({
-                error: 'Error deleting book'
-            },
-                {
-                    status: 404
-                }
-            )
-        } else {
-            return NextResponse.json({data}, {status: 200})
-        }
+            return NextResponse.json({error: 'Error deleting book'},{status: 404})
+        } 
+        
+        return NextResponse.json({data}, {status: 200});
 
     } catch (error) {
         console.log(error);
-        return NextResponse.json({
-            error: 'Interal Server error'
-        },
-            {
-                status: 500
-            }
-        )
+        return NextResponse.json({error: 'Interal Server error'},{status: 500})
     }
 }
