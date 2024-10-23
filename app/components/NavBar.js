@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Link from 'next/link'
+
 const NavBar = () => {
     return (
         <>
@@ -9,10 +11,9 @@ const NavBar = () => {
                         Book<span className="bg-primary text-white">Bar</span>
                     </a>
                     <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-                        <a className="mr-5 hover:text-gray-950 hover:cursor-pointer text-xl text-gray-700">Home</a>
-                        <a className="mr-5 hover:text-gray-950 hover:cursor-pointer text-xl text-gray-700">Book</a>
-                        <a className="mr-5 hover:text-gray-950 hover:cursor-pointer text-xl text-gray-700">About Us</a>
-                        <a className="mr-5 hover:text-gray-950 hover:cursor-pointer text-xl text-gray-700">Become Member</a>
+                        <Link href="/" className="mr-5 hover:text-gray-950 hover:cursor-pointer text-xl text-gray-700">Home</Link>
+                        <Link href="/pages/Books" className="mr-5 hover:text-gray-950 hover:cursor-pointer text-xl text-gray-700">Book</Link>
+                        <Link href="/pages/About" className="mr-5 hover:text-gray-950 hover:cursor-pointer text-xl text-gray-700">About Us</Link>
                     </nav>
 
                     <div className='flex gap-5'>
