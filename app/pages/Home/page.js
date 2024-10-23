@@ -5,7 +5,7 @@ import TestimonialSection from './HomePageComponent/TestimonialSection'
 import PricingSection from './HomePageComponent/PricingSection'
 import ContactUsForm from '@/app/components/ContactUsForm'
 
-const HomePage = () => {
+const page = () => {
   return (
     <>
         <HeroSection />
@@ -17,4 +17,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default page

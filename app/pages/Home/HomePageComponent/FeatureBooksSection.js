@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import BookCard from '@/app/components/BookCard'
 import Heading from '@/app/components/Heading'
 
@@ -9,6 +10,8 @@ import { BOOK_END_POINT } from '@/app/constant';
 
 
 const FeatureBooksSection = () => {
+
+    const router = useRouter();
 
     const [bookArray, setbookArray] = useState([]);
 
@@ -27,7 +30,9 @@ const FeatureBooksSection = () => {
     }, [])
 
     const handleAddToCart = () => {
-        console.log("clicked add to cart");
+        const bookData = bookArray;
+        localStorage.setItem('bookData', JSON.stringify(bookData));
+        router.push("/pages/Cart");
     }
 
     const handleBuyNow = () => {
