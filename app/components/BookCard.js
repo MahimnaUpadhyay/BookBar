@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
-const BookCard = ({ title, author, content, price, onBuyNow, onAddToCart, imageSrc }) => {
+const BookCard = ({ title, author, content, price, onShowMore, onAddToCart, imageSrc }) => {
     return (
         <Card className="w-[350px] border rounded-lg shadow-lg">
             <div className="relative w-full h-60">
@@ -34,9 +34,9 @@ const BookCard = ({ title, author, content, price, onBuyNow, onAddToCart, imageS
                 <Button 
                     className="bg-accent text-black hover:bg-primary hover:text-white 
                                px-4 py-2 rounded-md"
-                    onClick={onBuyNow}
+                    onClick={onShowMore}
                 >
-                    Buy Now
+                    Show More
                 </Button>
                 <Button 
                     className="bg-primary text-white px-4 py-2 rounded-md"

@@ -1,4 +1,4 @@
-import { Instagram, Twitter } from 'lucide-react'
+import { Facebook, Instagram, Twitter } from 'lucide-react'
 import React from 'react'
 
 const Footer = () => {
@@ -58,6 +58,9 @@ const Footer = () => {
                             </a>
                             <a className="ml-3 text-gray-500">
                                 <Twitter />
+                            </a>
+                            <a className="ml-3 text-gray-500">
+                                <Facebook />
                             </a>
                         </span>
                     </div>

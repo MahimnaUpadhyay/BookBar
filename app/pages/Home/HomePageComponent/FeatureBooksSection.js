@@ -30,13 +30,12 @@ const FeatureBooksSection = () => {
     }, [])
 
     const handleAddToCart = () => {
-        const bookData = bookArray;
-        localStorage.setItem('bookData', JSON.stringify(bookData));
-        router.push("/pages/Cart");
+        
     }
 
-    const handleBuyNow = () => {
-        console.log("clicked buy now");
+    const handleShowMore = (book) => {
+        localStorage.setItem('selectedBook', JSON.stringify(book));
+        router.push("/pages/ProductDetail");
     }
 
     return (
@@ -53,7 +52,7 @@ const FeatureBooksSection = () => {
                         content={data?.BookSummary}
                         price={data?.BookPrice}
                         onAddToCart={() => { handleAddToCart() }}
-                        onBuyNow={() => { handleBuyNow() }}
+                        onShowMore={() => { handleShowMore(data) }}
                     />
                 ))}
             </div>
