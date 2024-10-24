@@ -46,6 +46,7 @@ const FeatureBooksSection = () => {
             <div className='grid grid-cols-3 w-full h-auto min-h-[100vh] place-items-center'>
                 {bookArray.slice(0, 3).map((data) => (
                     <BookCard
+                        key={data.id}
                         imageSrc={""}
                         title={data?.BookName}
                         author={data?.BookAuthor}

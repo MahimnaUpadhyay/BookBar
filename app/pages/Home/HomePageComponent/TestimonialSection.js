@@ -13,7 +13,11 @@ const TestimonialSection = () => {
                     <div className="flex flex-wrap -m-4">
                         <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
                             <div className="h-full text-center">
-                                <img alt="testimonial" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="https://dummyimage.com/302x302" />
+                                <img
+                                    src="/image/men1.jpg"
+                                    alt="testimonial" 
+                                    className="w-[80px] h-[80px] mb-8 object-cover object-center rounded-full inline-block "
+                                />
                                 <p className="leading-relaxed">
                                     The quality of Book is better and price is also resonable. Delivery service is also fast.
                                 </p>
@@ -23,7 +27,11 @@ const TestimonialSection = () => {
                         </div>
                         <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
                             <div className="h-full text-center">
-                                <img alt="testimonial" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="https://dummyimage.com/300x300" />
+                                <img
+                                    src="/image/men2.jpg" 
+                                    alt="testimonial" 
+                                    className="w-[80px] h-[80px] mb-8 object-cover object-center rounded-full inline-block"
+                                />
                                 <p className="leading-relaxed">
                                     They always have latest collection with them and books are always in stock.   
                                 </p>
@@ -33,7 +41,11 @@ const TestimonialSection = () => {
                         </div>
                         <div className="lg:w-1/3 lg:mb-0 p-4">
                             <div className="h-full text-center">
-                                <img alt="testimonial" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="https://dummyimage.com/305x305" />
+                                <img 
+                                    src="/image/woman1.jpg"
+                                    alt="testimonial" 
+                                    className="w-[80px] h-[80px] mb-8 object-cover object-center rounded-full inline-block"
+                                />
                                 <p className="leading-relaxed">
                                     I always like how they give free goodies when you receive a order    
                                 </p>

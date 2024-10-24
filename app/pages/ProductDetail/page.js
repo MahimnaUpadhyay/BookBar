@@ -71,10 +71,20 @@ const page = () => {
                                 {BookData.BookSummary}
                             </span>
 
-                            <Button
-                                className="bg-accent text-black hover:bg-primary hover:text-white 
+                            <div className='flex gap-5'>
+                                <Button
+                                    className="bg-accent text-black hover:bg-primary hover:text-white 
                                                     px-8 py-2 rounded-md mt-5"
-                            > Buy Now </Button>
+                                > 
+                                    Buy Now 
+                                </Button>
+
+                                <Button
+                                    className="bg-primary text-white px-8 py-2 rounded-md mt-5"
+                                > 
+                                    Add to Cart 
+                                </Button>
+                            </div>
 
                         </div>
                     </div>

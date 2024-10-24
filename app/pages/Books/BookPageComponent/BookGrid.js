@@ -29,7 +29,17 @@ const BookGrid = () => {
         BookAPI();
     }, [])
 
-    const handleShowMore = (book) => {
+    const handleAddToCart = (book) => {
+        localStorage.setItem('selectedBook', JSON.stringify(book));
+        router.push("/pages/Cart");
+    }
+
+    const handleBuyNow = (book) => {
+        localStorage.setItem('selectedBook', JSON.stringify(book));
+        router.push("/pages/Payment");
+    }
+
+    const handleProductDetail = (book) => {
         localStorage.setItem('selectedBook', JSON.stringify(book));
         router.push("/pages/ProductDetail");
     }
@@ -43,36 +53,51 @@ const BookGrid = () => {
                     </h2>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {bookArray.map((data) => (
-                            <a href="javascript:;" className="max-w-[384px] mx-auto">
+                            <a className="max-w-[384px] mx-auto">
                                 <div className="w-full max-w-sm aspect-square">
-                                    <img src="https://pagedone.io/asset/uploads/1701157806.png" alt="cream image" className="w-full h-full rounded-xl object-cover" />
+                                    <img
+                                        src="https://pagedone.io/asset/uploads/1701157806.png"
+                                        alt="cream image"
+                                        className="w-full h-full rounded-xl object-cover cursor-pointer"
+                                        onClick={() => { handleProductDetail(data) }}
+                                    />
                                 </div>
                                 <div className="flex flex-col w-full h-auto justify-between items-start mt-3">
-                                        <div className='flex w-full h-auto justify-between items-center mb-2'>
-                                            <p className="font-semibold text-xl leading-8 text-black">
-                                                {data.BookName}
-                                            </p>
-                                            <p className="font-semibold text-md leading-8 text-gray-500">
-                                                By {data.BookAuthor}
-                                            </p>
-                                        </div>
-
-                                        <p className="font-medium text-lg leading-8 text-gray-950">
-                                            {data.BookSummary}
+                                    <div className='flex w-full h-auto justify-between items-center mb-2'>
+                                        <p className="font-semibold text-xl leading-8 text-black">
+                                            {data.BookName}
                                         </p>
+                                        <p className="font-semibold text-md leading-8 text-gray-500">
+                                            By {data.BookAuthor}
+                                        </p>
+                                    </div>
 
-                                        <div className='flex w-full h-auto justify-between items-center mt-2'>
-                                            <p className="font-semibold text-xl leading-8 text-primary">
-                                                ${data.BookPrice}
-                                            </p>
+                                    <p className="font-medium text-lg leading-8 text-gray-950">
+                                        {data.BookSummary}
+                                    </p>
+
+                                    <div className='flex w-full h-auto justify-between items-center mt-2'>
+                                        <p className="font-semibold text-xl leading-8 text-primary">
+                                            ${data.BookPrice}
+                                        </p>
+                                        <div className='flex gap-3'>
+
                                             <Button
-                                                onClick = {()=>{handleShowMore(data)}}
+                                                onClick={() => { handleBuyNow(data) }}
                                                 className="bg-accent text-black hover:bg-primary hover:text-white 
                                                         px-4 py-2 rounded-md"
                                             >
-                                                <ShoppingBag />
+                                                Buy Now
+                                            </Button>
+
+                                            <Button
+                                                onClick={() => { handleAddToCart(data) }}
+                                                className="bg-primary text-white px-4 py-2 rounded-md"
+                                            >
+                                                Add to Cart
                                             </Button>
                                         </div>
+                                    </div>
                                 </div>
                             </a>
                         ))}
