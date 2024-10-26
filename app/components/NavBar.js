@@ -10,7 +10,7 @@ const NavBar = () => {
 
     const router = useRouter();
 
-    const [userData, setuserData] = useState([]);
+    const [userData, setuserData] = useState([null]);
 
     useEffect(() => {
         const checkUser = async () => {

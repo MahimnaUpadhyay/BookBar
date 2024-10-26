@@ -27,7 +27,7 @@ export default function page() {
 
                 setTimeout(() => {
                     router.push('/');
-                }, 3000);
+                }, 1000);
             }
         } catch (error) {
             toast.error('Login failed. Please try again.', {

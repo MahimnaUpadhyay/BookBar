@@ -7,9 +7,9 @@ const Database_Config = () => {
     try {
 
         const DB_URL = process.env.DB_URL;
-        const DB_SERVICE_KEY = process.env.DB_SERVICE_KEY;
+        const DB_API_KEY = process.env.DB_API_KEY;
 
-        const supabase = createClient(DB_URL, DB_SERVICE_KEY);
+        const supabase = createClient(DB_URL, DB_API_KEY);
 
         if (!supabase) {
             console.log("Error in url or key");
