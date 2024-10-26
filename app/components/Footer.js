@@ -28,7 +28,7 @@ const Footer = () => {
                         <h2 className="font-medium text-gray-900 tracking-widest text-lg mb-3">SUBSCRIBE</h2>
                         <div className="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start">
                             <div className="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
-                                <label for="footer-field" className="leading-7 text-sm text-gray-600">Your Email</label>
+                                <label htmlFor="footer-field" className="leading-7 text-sm text-gray-600">Your Email</label>
                                 <input type="text" id="footer-field" name="footer-field" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:bg-transparent focus:ring-2 focus:ring-yellow-200 focus:border-yellow-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                             </div>
                             <button className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white 

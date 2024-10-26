@@ -2,8 +2,11 @@
 
 import { Facebook, Instagram, Star, StarHalf, Twitter } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 const page = () => {
+
+    const router = useRouter();
 
     const [BookData, setBookData] = useState([]);
 
@@ -20,6 +23,16 @@ const page = () => {
             }
         }
     }, []);
+
+    const handleBuyNow = (book) => {
+        localStorage.setItem("selectedBook", JSON.stringify(book));
+        router.push("/pages/Payment")
+    }
+
+    const handleAddToCart = (book) => {
+        localStorage.setItem("selectedBook", JSON.stringify(book));
+        router.push("/pages/Cart")
+    }
 
     return (
         <>
@@ -75,14 +88,16 @@ const page = () => {
                                 <Button
                                     className="bg-accent text-black hover:bg-primary hover:text-white 
                                                     px-8 py-2 rounded-md mt-5"
-                                > 
-                                    Buy Now 
+                                    onClick={() => { handleBuyNow(BookData) }}
+                                >
+                                    Buy Now
                                 </Button>
 
                                 <Button
                                     className="bg-primary text-white px-8 py-2 rounded-md mt-5"
-                                > 
-                                    Add to Cart 
+                                    onClick={() => { handleAddToCart(BookData) }}
+                                >
+                                    Add to Cart
                                 </Button>
                             </div>
 
