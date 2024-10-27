@@ -4,9 +4,12 @@ import { Facebook, Instagram, Star, StarHalf, Twitter } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/app/backend/API/Auth/supabase/SupabaseWrapper';
+
 const page = () => {
 
     const router = useRouter();
+    const {user} = useAuth();
 
     const [BookData, setBookData] = useState([]);
 
@@ -29,8 +32,8 @@ const page = () => {
         router.push("/pages/Payment")
     }
 
-    const handleAddToCart = (book) => {
-        localStorage.setItem("selectedBook", JSON.stringify(book));
+    const handleAddToCart = (book, user) => {
+        localStorage.setItem("selectedBook", JSON.stringify(book, user));
         router.push("/pages/Cart")
     }
 
@@ -88,7 +91,7 @@ const page = () => {
                                 <Button
                                     className="bg-accent text-black hover:bg-primary hover:text-white 
                                                     px-8 py-2 rounded-md mt-5"
-                                    onClick={() => { handleBuyNow(BookData) }}
+                                    onClick={() => { handleBuyNow(BookData, user) }}
                                 >
                                     Buy Now
                                 </Button>

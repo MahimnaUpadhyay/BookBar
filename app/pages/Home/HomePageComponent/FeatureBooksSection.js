@@ -6,7 +6,7 @@ import BookCard from '@/app/components/BookCard'
 import Heading from '@/app/components/Heading'
 
 import axios from 'axios'
-import { BOOK_END_POINT } from '@/app/constant';
+import { BOOK_END_POINT } from '../../../constant.js';
 
 
 const FeatureBooksSection = () => {
@@ -15,9 +15,9 @@ const FeatureBooksSection = () => {
 
     const [bookArray, setbookArray] = useState([]);
 
-    const BookAPI = async function () {
+    const BookAPI = async () => {
         try {
-            const result = await axios.get(BOOK_END_POINT);
+            const result = await axios.get(`${BOOK_END_POINT}`);
             const data = result.data.books;
             setbookArray(data);
         } catch (error) {

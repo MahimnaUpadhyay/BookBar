@@ -11,7 +11,7 @@ export async function GET(req) {
             console.error('Error fetching books:', error);
             return NextResponse.json({ error: 'Error fetching books' }, { status: 404 });
         }
-
+        
         return NextResponse.json({ books }, { status: 200 });
 
     } catch (error) {

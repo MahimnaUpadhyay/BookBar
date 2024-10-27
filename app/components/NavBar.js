@@ -9,7 +9,7 @@ import { supabase } from "../backend/API/Auth/supabase/supabase.js";
 
 const NavBar = () => {
   const router = useRouter();
-  const { user } = useAuth(); // Get the user from context
+  const { user } = useAuth();
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
