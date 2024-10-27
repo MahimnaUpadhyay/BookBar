@@ -1,3 +1,4 @@
+import { decode } from "base64-arraybuffer";
 import Database_Config from "../../DATABASE/Database_Config";
 import { NextResponse } from "next/server";
 
@@ -22,20 +23,68 @@ export async function GET(req) {
 
 export async function POST(req) {
     try {
-        const body = await req.json();
+        const formData = await req.formData();
 
-        const { data: books, error } = await supabase.from("BookModel").insert(body)
+        const BookName = formData.get("BookName");
+        const BookAuthor = formData.get("BookAuthor");
+        const BookSummary = formData.get("BookSummary");
+        const BookPrice = formData.get("BookPrice");
+        const BookImage = formData.get("BookImage");
 
-        if (error) {
-            return NextResponse.json({ error: 'Error inserting books' }, { status: 404 });
+        if (!BookImage) {
+            return NextResponse.json(
+                { error: "No file uploaded" }, 
+                { status: 400 }
+            );
         }
-        
+
+        const filename = `${Date.now()}_${BookImage.name}`;
+
+        const arrayBuffer = await BookImage.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+
+
+        const { data: image, error: imageError } = await supabase.storage
+            .from("BookImage")
+            .upload(filename, buffer, {
+                public: false,
+                contentType: BookImage.type,
+                upsert: false
+            });
+
+        if (imageError) {
+            console.error("Image upload error:", imageError);
+            return NextResponse.json(
+                { error: "Error uploading book image" },
+                { status: 500 }
+            );
+        }
+
+        const imageUrl = `${process.env.DB_URL}/storage/v1/object/public/BookImage/${filename}`;
+
+        const { data: books, error: dbError } = await supabase
+            .from("BookModel")
+            .insert({ BookName, BookAuthor, image_url: imageUrl, BookPrice, BookSummary });
+
+        if (dbError) {
+            console.error("Database insertion error:", dbError);
+            return NextResponse.json(
+                { error: "Error inserting book details" },
+                { status: 500 }
+            );
+        }
+
         return NextResponse.json({ books }, { status: 200 });
-    
+
     } catch (error) {
-        return NextResponse.json({ error: 'Interal Server Error' }, { status: 500 }, { error })
+        console.error("Internal server error:", error);
+        return NextResponse.json(
+            { error: "Internal Server Error" },
+            { status: 500 }
+        );
     }
 }
+
 
 export async function PUT(req) {
     try {

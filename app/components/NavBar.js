@@ -4,8 +4,10 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "../backend/API/Auth/supabase/SupabaseWrapper.js"; 
-import { supabase } from "../backend/API/Auth/supabase/supabase.js"; 
+import InitialsAvatar from 'react-initials-avatar';
+import 'react-initials-avatar/lib/ReactInitialsAvatar.css';
+import { useAuth } from "../backend/API/Auth/supabase/SupabaseWrapper.js";
+import { supabase } from "../backend/API/Auth/supabase/supabase.js";
 
 const NavBar = () => {
   const router = useRouter();
@@ -34,12 +36,10 @@ const NavBar = () => {
           </Link>
         </nav>
 
-        <div className="flex gap-5">
+        <div className="flex gap-5 justify-between items-center">
           {user ? (
             <>
-              <span className="text-xl font-medium">
-                Hello, {user.email}
-              </span>
+              <InitialsAvatar name={user?.email}/>
               <Button
                 onClick={handleSignOut}
                 className="inline-flex items-center bg-secondary border-0 py-1 px-3 focus:outline-none 

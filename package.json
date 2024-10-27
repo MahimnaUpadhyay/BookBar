@@ -16,6 +16,8 @@
     "@supabase/ssr": "^0.5.1",
     "@supabase/supabase-js": "^2.45.6",
     "axios": "^1.7.7",
+    "base-64": "^1.0.0",
+    "base64-arraybuffer": "^1.0.2",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -25,6 +27,7 @@
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18",
+    "react-initials-avatar": "^1.1.2",
     "react-toastify": "^10.0.6",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7"

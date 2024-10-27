@@ -19,6 +19,7 @@ const FeatureBooksSection = () => {
         try {
             const result = await axios.get(`${BOOK_END_POINT}`);
             const data = result.data.books;
+            console.log(data)
             setbookArray(data);
         } catch (error) {
             console.log("error from api integreation ", error);
@@ -47,7 +48,7 @@ const FeatureBooksSection = () => {
                 {bookArray.slice(0, 3).map((data) => (
                     <BookCard
                         key={data.id}
-                        imageSrc={""}
+                        imageSrc={data.image_url}
                         title={data?.BookName}
                         author={data?.BookAuthor}
                         content={data?.BookSummary}
