@@ -28,8 +28,9 @@ const OrderSummary = ({ nextStep, setFormData, formData }) => {
     return totalPrice.toFixed(2);
   };
 
-  const handleNext = () => {
+  const handleNext = (BookData) => {
     if (user) {
+      localStorage.setItem("selectedBook", JSON.stringify(BookData));
       nextStep();
     } else {
       router.push("/pages/Auth/Login");
@@ -87,7 +88,7 @@ const OrderSummary = ({ nextStep, setFormData, formData }) => {
             </Button>
             <Button
               className="bg-primary text-white px-8 py-2 rounded-md"
-              onClick={handleNext}
+              onClick={() => handleNext(bookData)}
             >
               Buy Now
             </Button>

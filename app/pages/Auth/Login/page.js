@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { signIn } from '../../../backend/API/Auth/AuthFunction/AuthFunction.js';
 import { UserIcon } from 'lucide-react';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
