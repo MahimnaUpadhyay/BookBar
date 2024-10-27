@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { SupabaseProvider } from "./backend/API/Auth/supabase/SupabaseWrapper";
 
 const geistSans = localFont({
   src: "../public/fonts/GeistVF.woff",
@@ -25,9 +26,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NavBar />
-        {children}
-        <Footer />
+        <SupabaseProvider>
+          <NavBar />
+          {children}
+          <Footer />
+        </SupabaseProvider>
       </body>
     </html>
   );

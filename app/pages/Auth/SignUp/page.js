@@ -11,18 +11,17 @@ import { useRouter } from 'next/navigation';
 
 export default function Page() {
   const router = useRouter();
-
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignUp = async () => {
     try {
-      const data = await signUp(email, password, name);
+      const data = await signUp(email, name, password);
 
       if (data) {
         toast.success('User created! Please check your inbox for verification.', {
-          position: "top-right",
+          position: 'top-right',
           autoClose: 3000,
         });
 
@@ -32,54 +31,56 @@ export default function Page() {
       }
     } catch (error) {
       toast.error('Sign up failed. Please try again.', {
-        position: "top-right",
+        position: 'top-right',
         autoClose: 3000,
       });
-      console.log(error);
+      console.error(error);
     }
   };
 
   return (
-    <div className='flex w-full h-[500px] justify-center items-center'>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-200 via-yellow-500 to-yellow-800">
       <ToastContainer />
-      <div className='flex flex-col bg-primary w-[400px] h-auto text-white p-5 gap-4 
-                      justify-center items-center rounded-md shadow-md'>
-        <UserIcon
-          size={60}
-          className='bg-white text-gray-700 rounded-full p-2'
-        />
-        <input
-          type="text"
-          placeholder="Your Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className='p-2 rounded-full focus:border-yellow-500 text-black w-[250px]'
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className='p-2 rounded-full focus:border-yellow-500 text-black w-[250px]'
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className='p-2 rounded-full focus:border-yellow-500 text-black w-[250px]'
-        />
+      <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-md space-y-6">
+        <div className="flex flex-col items-center gap-4">
+          <UserIcon size={60} className="text-gray-700" />
+          <h2 className="text-2xl font-bold text-gray-800">Create Your Account</h2>
+          <p className="text-gray-500">Get started with your free account</p>
+        </div>
+        <div className="space-y-4">
+          <input
+            type="text"
+            placeholder="Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full p-3 border rounded-full focus:ring-2 focus:ring-yellow-200 focus:outline-none text-gray-900"
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full p-3 border rounded-full focus:ring-2 focus:ring-yellow-200 focus:outline-none text-gray-900"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-3 border rounded-full focus:ring-2 focus:ring-yellow-200 focus:outline-none text-gray-900"
+          />
+        </div>
         <Button
-          className="bg-accent hover:bg-accent"
-          onClick={handleSignUp}>
+          onClick={handleSignUp}
+          className="w-full py-3 bg-accent text-black rounded-full hover:bg-primary hover:text-white transition-all duration-300"
+        >
           Sign Up
         </Button>
-
-        <p>
-          Already signed in?{' '}
-          <span className='font-bold cursor-pointer'>
-            <Link href="/pages/Auth/Login">Login</Link>
-          </span>
+        <p className="text-center text-gray-600">
+          Already have an account?{' '}
+          <Link href="/pages/Auth/Login">
+            <span className="text-purple-600 font-semibold hover:underline">Login</span>
+          </Link>
         </p>
       </div>
     </div>

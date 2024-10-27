@@ -15,7 +15,7 @@ const FeatureBooksSection = () => {
 
     const [bookArray, setbookArray] = useState([]);
 
-    const BookAPI = async function name() {
+    const BookAPI = async function () {
         try {
             const result = await axios.get(BOOK_END_POINT);
             const data = result.data.books;

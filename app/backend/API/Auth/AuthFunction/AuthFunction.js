@@ -7,9 +7,7 @@ export async function signUp(email, password, name) {
                 email,
                 password
             }, {
-            data: {
-                name,
-            },
+            name
         }
         )
 
