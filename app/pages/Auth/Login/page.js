@@ -12,14 +12,23 @@ export default function Page() {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    
     const handleSignIn = async () => {
+
+        const adminEmail = process.env.ADMIN_EMAIL;
+        console.log(adminEmail)
         try {
             const data = await signIn(email, password);
-            if (data) {
+            const isAdmin = data?.user?.email;
+
+            if (isAdmin == adminEmail) {
+                toast.success('Welcome Back', { position: 'top-right', autoClose: 3000 });
+                setTimeout(() => router.push('/pages/AdminDashboard'), 1000);
+            } else if (data) {
                 toast.success('Welcome Back', { position: 'top-right', autoClose: 3000 });
                 setTimeout(() => router.push('/'), 1000);
             }
+            
         } catch (error) {
             toast.error('Login failed. Please try again.', { position: 'top-right', autoClose: 3000 });
             console.error(error);

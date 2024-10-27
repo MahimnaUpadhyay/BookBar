@@ -19,7 +19,6 @@ const FeatureBooksSection = () => {
         try {
             const result = await axios.get(`${BOOK_END_POINT}`);
             const data = result.data.books;
-            console.log(data)
             setbookArray(data);
         } catch (error) {
             console.log("error from api integreation ", error);

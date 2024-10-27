@@ -47,12 +47,12 @@ const OrderSummary = ({ nextStep, setFormData, formData }) => {
 
   return (
     <div className="grid grid-cols-2 w-full h-auto place-items-center bg-accent rounded-lg">
-      <div className="flex w-full gap-3 justify-center items-center">
-        <div className="w-40 h-40 rounded-md flex justify-start items-center">
+      <div className="flex w-full gap-3 justify-center items-center p-2">
+        <div className="w-40 h-40 rounded-md flex justify-center items-center">
           <img
-            src="https://dummyimage.com/400x400"
+            src={bookData?.image_url}
             alt="book image"
-            className="object-cover w-40 h-40 p-2 rounded-md"
+            className="object-cover w-full h-full rounded-md shadow-md flex justify-center items-center"
           />
         </div>
 

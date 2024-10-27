@@ -42,11 +42,11 @@ const page = () => {
             <section className="text-gray-600 body-font overflow-hidden">
                 <div className="flex flex-col w-full h-auto justify-center items-center p-5">
                     <div className="grid grid-cols-2 w-full h-auto place-items-center p-5">
-                        <div className='w-[450px] h-[450px]'>
+                        <div className='w-[450px] h-[450px] object-cover'>
                             <img
                                 alt="ecommerce"
-                                className="w-[450px]h-[450px] object-cover object-center rounded"
-                                src="https://dummyimage.com/400x400"
+                                className="w-full h-full object-cover rounded-md shadow-md"
+                                src={BookData.image_url}
                             />
                         </div>
 

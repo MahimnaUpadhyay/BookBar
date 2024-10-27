@@ -47,16 +47,16 @@ const BookGrid = () => {
     return (
         <>
             <section className="py-24">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <h2 className="font-manrope font-bold text-3xl min-[400px]:text-4xl text-black mb-8 max-lg:text-center">
                         Available Books
                     </h2>
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                         {bookArray.map((data) => (
                             <a className="max-w-[384px] mx-auto">
                                 <div className="w-full max-w-sm aspect-square">
                                     <img
-                                        src="https://pagedone.io/asset/uploads/1701157806.png"
+                                        src={data?.image_url}
                                         alt="cream image"
                                         className="w-full h-full rounded-xl object-cover cursor-pointer"
                                         onClick={() => { handleProductDetail(data) }}
