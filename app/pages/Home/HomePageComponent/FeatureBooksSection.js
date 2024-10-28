@@ -16,12 +16,15 @@ const FeatureBooksSection = () => {
     const { addToCart } = useCart();
 
     const [bookArray, setbookArray] = useState([]);
+    const [isLoading, setisLoading] = useState(false);
 
     const BookAPI = async () => {
         try {
+            setisLoading(true)
             const result = await axios.get(`${BOOK_END_POINT}`);
             const data = result.data.books;
             setbookArray(data);
+            setisLoading(false)
         } catch (error) {
             console.log("error from api integreation ", error);
         }
@@ -47,20 +50,27 @@ const FeatureBooksSection = () => {
             <Heading
                 HeadingName={"BEST SELLER"}
             />
-            <div className='grid grid-cols-3 w-full h-auto min-h-[100vh] place-items-center'>
-                {bookArray.slice(0, 3).map((data) => (
-                    <BookCard
-                        key={data.id}
-                        imageSrc={data.image_url}
-                        title={data?.BookName}
-                        author={data?.BookAuthor}
-                        content={data?.BookSummary}
-                        price={data?.BookPrice}
-                        onAddToCart={() => { handleAddToCart(data) }}
-                        onShowMore={() => { handleShowMore(data) }}
-                    />
-                ))}
-            </div>
+            {isLoading == true ? (
+                <img 
+                    src='/svg/preloader1.svg' 
+                    className='flex w-full h-screen justify-center items-center'
+                />
+            ) : (
+                <div className='grid grid-cols-3 w-full h-auto min-h-[100vh] place-items-center'>
+                    {bookArray.slice(0, 3).map((data) => (
+                        <BookCard
+                            key={data.id}
+                            imageSrc={data.image_url}
+                            title={data?.BookName}
+                            author={data?.BookAuthor}
+                            content={data?.BookSummary}
+                            price={data?.BookPrice}
+                            onAddToCart={() => { handleAddToCart(data) }}
+                            onShowMore={() => { handleShowMore(data) }}
+                        />
+                    ))}
+                </div>)
+            }
         </>
     )
 }

@@ -49,14 +49,14 @@ const OrderSummary = ({ nextStep }) => {
       return totalPrice.toFixed(2);
     }
 
-    const total = cartItems.items.reduce((acc, item) => {
-      const itemTotal = item.BookPrice * (cartItems.quantities[item.id] || 1);
+      const total = cartItems.items.reduce((acc, item) => {
+      const itemTotal = item.BookPrice * (cartItems.quantities[item.id] || 1) + (5 * item.BookPrice) / 100 + 2.5;
       return acc + itemTotal;
-    }, 0);
+    });
     const finalTotal = total + (5 * total) / 100 + 2.5;
     return finalTotal.toFixed(2);
   };
-
+ 
   const handleNext = () => {
     if (user) {
       nextStep();
@@ -105,7 +105,7 @@ const OrderSummary = ({ nextStep }) => {
               <div className="flex flex-col">
                 <h2 className="font-bold text-lg">{data?.BookName}</h2>
                 <p className="text-gray-600">{data?.BookAuthor || "Unknown Author"}</p>
-                <p className="text-gray-500">${data?.BookPrice.toFixed(2)}</p>
+                <p className="text-gray-500">${data?.BookPrice?.toFixed(2)}</p>
               </div>
             </div>
             <div className="flex flex-col items-end">
@@ -113,7 +113,7 @@ const OrderSummary = ({ nextStep }) => {
                 Quantity: {cartItems.quantities[data?.id] || 1}
               </p>
               <p className="font-semibold">
-                Item Total: ${(data?.BookPrice * (cartItems.quantities[data?.id] || 1))?.toFixed(2)}
+                Item Total: ${5*(data?.BookPrice * (cartItems?.quantities[data?.id]))/100 + 2.5}
               </p>
             </div>
           </div>
@@ -130,6 +130,13 @@ const OrderSummary = ({ nextStep }) => {
       <div className="flex gap-4 justify-end mt-4">
         {user ? (
           <>
+            <Button
+              className="bg-primary text-white px-8 py-2 rounded-md"
+              onClick = {()=> {router.push("/pages/Books")}}
+            >
+              Shop More
+            </Button>
+
             <Button
               className="bg-accent text-black hover:bg-primary hover:text-white px-8 py-2 rounded-md"
               onClick={() => handleAddToCart(bookData)}

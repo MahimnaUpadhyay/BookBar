@@ -22,7 +22,7 @@ const TestimonialSection = () => {
                                     The quality of Book is better and price is also resonable. Delivery service is also fast.
                                 </p>
                                 <span className="inline-block h-1 w-10 rounded bg-primary mt-6 mb-4"></span>
-                                <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">USER 1</h2>
+                                <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">Mark</h2>
                             </div>
                         </div>
                         <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
@@ -36,7 +36,7 @@ const TestimonialSection = () => {
                                     They always have latest collection with them and books are always in stock.   
                                 </p>
                                 <span className="inline-block h-1 w-10 rounded bg-primary mt-6 mb-4"></span>
-                                <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">USER 2</h2>
+                                <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">Jackson</h2>
                             </div>
                         </div>
                         <div className="lg:w-1/3 lg:mb-0 p-4">
@@ -50,7 +50,7 @@ const TestimonialSection = () => {
                                     I always like how they give free goodies when you receive a order    
                                 </p>
                                 <span className="inline-block h-1 w-10 rounded bg-primary mt-6 mb-4"></span>
-                                <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">USER 3</h2>
+                                <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">Kaori</h2>
                             </div>
                         </div>
                     </div>
