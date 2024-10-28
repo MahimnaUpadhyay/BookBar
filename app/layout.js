@@ -3,6 +3,7 @@ import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { SupabaseProvider } from "./backend/API/Auth/supabase/SupabaseWrapper";
+import { CartProvider } from "./pages/Cart/CartPageComponent/cartContext";
 
 const geistSans = localFont({
   src: "../public/fonts/GeistVF.woff",
@@ -27,9 +28,11 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SupabaseProvider>
-          <NavBar />
-          {children}
-          <Footer />
+          <CartProvider>
+            <NavBar />
+              {children}
+            <Footer />
+          </CartProvider>
         </SupabaseProvider>
       </body>
     </html>

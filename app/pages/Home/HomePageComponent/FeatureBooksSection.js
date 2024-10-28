@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import BookCard from '@/app/components/BookCard'
 import Heading from '@/app/components/Heading'
+import { useCart } from '../../Cart/CartPageComponent/cartContext.js'
 
 import axios from 'axios'
 import { BOOK_END_POINT } from '../../../constant.js';
@@ -12,6 +13,7 @@ import { BOOK_END_POINT } from '../../../constant.js';
 const FeatureBooksSection = () => {
 
     const router = useRouter();
+    const { addToCart } = useCart();
 
     const [bookArray, setbookArray] = useState([]);
 
@@ -29,8 +31,10 @@ const FeatureBooksSection = () => {
         BookAPI();
     }, [])
 
-    const handleAddToCart = () => {
-        
+
+    const handleAddToCart = (book) => {
+        addToCart(book);
+        router.push("/pages/Cart");
     }
 
     const handleShowMore = (book) => {
@@ -52,7 +56,7 @@ const FeatureBooksSection = () => {
                         author={data?.BookAuthor}
                         content={data?.BookSummary}
                         price={data?.BookPrice}
-                        onAddToCart={() => { handleAddToCart() }}
+                        onAddToCart={() => { handleAddToCart(data) }}
                         onShowMore={() => { handleShowMore(data) }}
                     />
                 ))}
